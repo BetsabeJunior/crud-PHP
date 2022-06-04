@@ -1,0 +1,41 @@
+estoy tratando de crear un formulario con ingreso y conexión a base de datos en php, pero la conexión a la base de datos me falla, osea ya no me muestra ningún dato cuando añado 
+
+    $resultado = mysqli_query ($conexion_per,$instruccion_SQL);
+
+[![introducir la descripción de la imagen aquí][1]][1]
+
+Sin esa línea:
+
+[![introducir la descripción de la imagen aquí][2]][2]
+
+Este es el código completo que estoy usando:
+
+<?php
+
+$host = 'localhost';
+$username = 'root';
+$passwd = '';
+$dbname = 'nombre de la base de datos';
+$port = 3306;
+
+$conexion = new mysqli($host, $username, $passwd, $dbname);
+
+if ($conexion->connect_errno){
+    echo 'Fallo a conectar a la bd' . $conexion->connect_error ;
+} else {
+    echo 'Conexión OK';   
+
+/*O Puedes Colocar esta 
+$conexion = new mysqli($host, $username, $passwd, $dbname, $port);*/
+
+ $sql = 'INSERT INTO 'comisionadores' (id_medio, id_personal, correo, telefono) VALUES ('$med','$nom','$correo','$tel')';
+
+$instruccion_SQL = $conexion->query($sql);
+?>
+
+<?php
+-- Esto ya van otra hoja solo para tener buenas practicas 
+ $sql = 'INSERT INTO 'comisionadores' (id_medio, id_personal, correo, telefono) VALUES ('$med','$nom','$correo','$tel')';
+
+$instruccion_SQL = $conexion->query($sql);
+?>
